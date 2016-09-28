@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/drawerLayout"
+    tools:context="qianfeng.a6_3drawerlayout.MainActivity">
+
+   <!--
+   主界面一定要写在三个部分的第一位上，三个部分分别是：主界面，左边菜单，右边菜单
+   如果主界面不是放在三个部分中的第一个，那么左边或者右边菜单的点击事件，控件将会无法获取到焦点。
+   -->
+    <!--
+    DrawerLayout整体上分为三大块，分别是左右两边的侧拉菜单和主布局
+
+    android:layout_gravity="left" 属性用来指定相应的布局文件是左边侧拉菜单还是右边侧拉菜单
+
+    主布局要放到第一个，否则左右两边的侧拉菜单获取不到点击事件
+    -->
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:text="主界面"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:onClick="openLeft"
+            android:text="打开左边的侧拉菜单"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:onClick="openRight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="打开右边的侧拉菜单" />
+
+
+    </LinearLayout>
+
+    <!-- 父容器是LinearLayout，才可以使用layout_gravity, 这里是左边的侧拉菜单，
+         这个layout_gravity是DrawerLayout的属性，用来指示是左边还是右边的侧拉菜单 -->
+    <LinearLayout
+        android:layout_gravity="left"
+        android:orientation="horizontal"
+        android:layout_width="200dp"
+        android:background="@color/colorPrimary"
+        android:layout_height="match_parent">
+        <ListView
+            android:id="@+id/lv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></ListView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_gravity="right"
+        android:layout_width="200dp"
+        android:background="@color/colorAccent"
+        android:layout_height="match_parent">
+        <TextView
+            android:text="右边的侧拉菜单"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+</android.support.v4.widget.DrawerLayout>
